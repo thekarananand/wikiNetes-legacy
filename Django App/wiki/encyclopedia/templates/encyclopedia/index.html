@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    wikiNetes
+{% endblock %}
+
+{% block body %}
+    <div class="indexPage">
+    <h1>{{ title }}</h1>
+
+    <ul>
+        {% for entry in entries %}
+            <li><a href="{% url 'RenderPage' Page=entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endblock %}

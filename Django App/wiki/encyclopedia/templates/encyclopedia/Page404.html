@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ Name }} | wikiNetes
+{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <div class="errorPage">
+            <img src="{% static 'encyclopedia/error.svg' %}" alt="">
+            <h1>{{ Error_Msg|safe }}</h1>
+    </div>
+{% endblock %}

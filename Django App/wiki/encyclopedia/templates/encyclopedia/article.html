@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ Name }} | wikiNetes
+{% endblock %}
+
+{% block body %}
+
+    <div class='article_content'>
+        {{ Content|safe }}
+        <form action="{% url 'editPage' Page=Name %}" method="POST">
+            {% csrf_token %}
+            <input class="btn1" type="submit" value="Edit">
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <div>
+        Container ID : {{ containerID }}
+    </div>
+{% endblock %}

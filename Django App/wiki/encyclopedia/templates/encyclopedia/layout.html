@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="topbar">
+
+            <div class="left-topbar">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'encyclopedia/logo.svg' %}" alt="wikiNetes">
+                </a>
+            </div>
+
+            <div class="center-topbar">
+                <form action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
+                    <input class="search" type="text" name="q" placeholder="Search wikiNetes">
+                    <button class="search-button"><img src="{% static 'encyclopedia/search.svg' %}" alt="Search"></button>
+                </form>
+            </div>
+
+            <div class="right-topbar">
+
+                <a href="{% url 'new' %}">
+                    <div>Create New</div>
+                </a>
+
+
+                <a href="{% url 'RandomPage' %}">
+                    <div>Random</div>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="main">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <footer>
+            <div>
+                Container ID : {{ containerID }}
+            </div>
+        </footer>
+
+    </body>
+</html>
